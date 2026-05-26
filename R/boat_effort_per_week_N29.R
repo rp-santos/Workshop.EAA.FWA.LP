@@ -1,3 +1,64 @@
+#' Calculate weekly boat survey effort by grid cell
+#'
+#' @description
+#'
+#' [boat_effort_per_week_N29()] calculates the total survey effort
+#' (in minutes) per week and per spatial grid cell based on boat trip
+#' tracking data. Boat positions are assigned to grid cells using
+#' [azores.fkw::find_grid_cells()], and effort is summarized as the
+#' number of recorded minutes within each cell.
+#'
+#' The function can return detector coordinates either in geographic
+#' coordinates (longitude/latitude) or projected UTM coordinates
+#' (EPSG:32629).
+#'
+#' @param boat_trips A data frame containing boat tracking data.
+#'   Must include the columns:
+#'   \describe{
+#'     \item{trip}{Trip identifier}
+#'     \item{week}{Week identifier}
+#'     \item{longitude}{Longitude coordinates in decimal degrees}
+#'     \item{latitude}{Latitude coordinates in decimal degrees}
+#'   }
+#'
+#' @param grid A spatial grid object generated with
+#'   [create_grid_N29()]. Defaults to `create_grid_N29()`.
+#'
+#' @param coordinates Character string indicating the coordinate
+#'   system of the output detector locations. Must be either:
+#'   \describe{
+#'     \item{"utm"}{Returns UTM coordinates (default)}
+#'     \item{"longlat"}{Returns longitude/latitude coordinates}
+#'   }
+#'
+#' @returns
+#' A tibble where each row corresponds to a detector/grid cell and
+#' columns contain the total number of survey minutes per week.
+#'
+#' If `coordinates = "utm"`, the output includes:
+#' \describe{
+#'   \item{index}{Grid cell identifier}
+#'   \item{easting}{UTM easting coordinate}
+#'   \item{northing}{UTM northing coordinate}
+#' }
+#'
+#' If `coordinates = "longlat"`, the output includes:
+#' \describe{
+#'   \item{index}{Grid cell identifier}
+#'   \item{longitude}{Longitude coordinate}
+#'   \item{latitude}{Latitude coordinate}
+#' }
+#'
+#' Remaining columns correspond to weekly survey effort values
+#' expressed in total minutes.
+#'
+#' @examples
+#' \dontrun{
+#' effort <- boat_effort_per_week_N29(
+#'   boat_trips = boat_trips_by_min
+#' )
+#' }
+#'
 #' @export
 boat_effort_per_week_N29 <-
   function(boat_trips,
