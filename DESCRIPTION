@@ -17,8 +17,8 @@ Authors@R: c(
     )
 Description: An R Compendium providing data, code and documentation needed to
     replicate the results of the paper Gennari, G., Rodrigues A., Carvalho, P.; Gil, S., Magno, R., 
-Castilho, R., and Peres dos Santos R. 2026 Opportunistic data for assessing abundance and site fidelity of fin
-whales (Balaenoptera physalus) in the Faro area, Portugal. Marine Biology 173 (94).
+    Castilho, R., and Peres dos Santos R. 2026 Opportunistic data for assessing abundance and site fidelity of fin
+    whales (Balaenoptera physalus) in the Faro area, Portugal. Marine Biology 173 (94).
     <doi:https://doi.org/10.1007/s00227-026-04837-2>.
 License: CC BY 4.0
 Encoding: UTF-8
