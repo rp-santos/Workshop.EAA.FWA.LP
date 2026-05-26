@@ -3,17 +3,20 @@
 #' @description
 #'
 #' [boat_effort_per_week_N29()] calculates the total survey effort
-#' (in minutes) per week and per spatial grid cell based on boat trip
-#' tracking data. Boat positions are assigned to grid cells using
-#' [azores.fkw::find_grid_cells()], and effort is summarized as the
-#' number of recorded minutes within each cell.
+#' (in minutes) per week and per spatial grid cell based on boat
+#' tracking data.
 #'
-#' The function can return detector coordinates either in geographic
-#' coordinates (longitude/latitude) or projected UTM coordinates
-#' (EPSG:32629).
+#' Boat positions are assigned to spatial grid cells using
+#' [azores.fkw::find_grid_cells()], and effort is summarized as
+#' the number of recorded minutes within each detector/grid cell.
+#'
+#' The function can return detector coordinates either in
+#' geographic coordinates (longitude/latitude) or projected UTM
+#' coordinates (EPSG:32629).
 #'
 #' @param boat_trips A data frame containing boat tracking data.
-#'   Must include the columns:
+#'   Must include the following columns:
+#'
 #'   \describe{
 #'     \item{trip}{Trip identifier}
 #'     \item{week}{Week identifier}
@@ -22,41 +25,70 @@
 #'   }
 #'
 #' @param grid A spatial grid object generated with
-#'   [create_grid_N29()]. Defaults to `create_grid_N29()`.
+#'   [create_grid_N29()].
+#'
+#'   Defaults to `create_grid_N29()`.
 #'
 #' @param coordinates Character string indicating the coordinate
-#'   system of the output detector locations. Must be either:
+#'   system used for detector locations in the output.
+#'
+#'   Accepted values are:
+#'
 #'   \describe{
 #'     \item{"utm"}{Returns UTM coordinates (default)}
 #'     \item{"longlat"}{Returns longitude/latitude coordinates}
 #'   }
 #'
 #' @returns
-#' A tibble where each row corresponds to a detector/grid cell and
-#' columns contain the total number of survey minutes per week.
+#'
+#' A tibble where each row corresponds to a detector/grid cell
+#' and columns contain the total number of survey minutes per
+#' week.
 #'
 #' If `coordinates = "utm"`, the output includes:
-#' \describe{
-#'   \item{index}{Grid cell identifier}
-#'   \item{easting}{UTM easting coordinate}
-#'   \item{northing}{UTM northing coordinate}
-#' }
+#'
+#'   \describe{
+#'     \item{index}{Grid cell identifier}
+#'     \item{easting}{UTM easting coordinate}
+#'     \item{northing}{UTM northing coordinate}
+#'   }
 #'
 #' If `coordinates = "longlat"`, the output includes:
-#' \describe{
-#'   \item{index}{Grid cell identifier}
-#'   \item{longitude}{Longitude coordinate}
-#'   \item{latitude}{Latitude coordinate}
-#' }
+#'
+#'   \describe{
+#'     \item{index}{Grid cell identifier}
+#'     \item{longitude}{Longitude coordinate}
+#'     \item{latitude}{Latitude coordinate}
+#'   }
 #'
 #' Remaining columns correspond to weekly survey effort values
 #' expressed in total minutes.
 #'
+#' @details
+#'
+#' The function performs the following steps:
+#'
+#' 1. Assigns each boat position to a spatial grid cell using
+#'    [azores.fkw::find_grid_cells()]
+#'
+#' 2. Groups observations by week and detector/grid cell
+#'
+#' 3. Calculates the total number of survey minutes within each
+#'    grid cell
+#'
+#' 4. Optionally converts detector coordinates from geographic
+#'    coordinates to UTM zone 29N coordinates
+#'
+#' The resulting effort matrix can be used for spatially explicit
+#' capture-recapture analyses and habitat-based effort correction.
+#'
 #' @examples
 #' \dontrun{
+#'
 #' effort <- boat_effort_per_week_N29(
 #'   boat_trips = boat_trips_by_min
 #' )
+#'
 #' }
 #'
 #' @export
