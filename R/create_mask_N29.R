@@ -1,3 +1,4 @@
+#' @export
 create_mask_N29 <-
   function(x_range,
            y_range,
@@ -6,7 +7,7 @@ create_mask_N29 <-
            y_pad_perc = 0.05,
            buffer = 12000,
            exclude_regions = NULL) {
-    
+
     trapping_grid <-
       create_utm_grid_N29(
         x_range = x_range,
@@ -17,7 +18,7 @@ create_mask_N29 <-
         x_offset = -utm_resolution/2,
         y_offset = -utm_resolution/2
       )
-    
+
     if (!is.null(exclude_regions)) {
       mask <-
         secr::make.mask(
@@ -39,6 +40,6 @@ create_mask_N29 <-
           buffer = buffer
         )
     }
-    
+
     mask
   }
