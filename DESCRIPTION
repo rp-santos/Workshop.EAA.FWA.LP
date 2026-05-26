@@ -3,10 +3,12 @@ Type: Package
 Title: R Compendium Accompanying Workshop.EAA.FWA.LP (2026)
 Version: 0.1.0
 Authors@R: c(
-    person(given = "Rui", family = "Peres dos Santos",
-      email = "rpsantos@pattern.institute",
-      role = c("aut", "dtc"),
-      comment = c(ORCID = "0000-0002-5979-0700")),
+    person(
+  given = "Rui",
+  family = "Peres dos Santos",
+  email = "rpsantos@pattern.institute",
+  role = c("aut", "cre", "dtc"),
+  comment = c(ORCID = "0000-0002-5979-0700")),
     person(given = "Ginevra", family = "Gennari",
       email = "ginevragennari@gmail.com", role = c("aut", "ths"), 
       comment = c(ORCID = "0009-0006-7260-4032")),
@@ -23,16 +25,14 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-Suggests: 
-   tidyverse
 Remotes: 
     patterninstitute/azores.fkw,
-Imports: 
-tidyverse,
-patchwork,
-sf,
-secr,
-openCR,
-ggspatial
+Imports:
+    tidyverse,
+    patchwork,
+    sf,
+    secr,
+    openCR,
+    ggspatial
 Depends: 
     R (>= 3.5)
