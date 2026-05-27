@@ -20,61 +20,25 @@ remotes::install_github("rp-santos/Workshop.EAA.FWA.LP")
 
 A sf object exclusive of the Algarve region:
 
-``` r
-data("exclude_regions")
-
-ggplot2::ggplot() +
-  ggplot2::geom_sf(data = exclude_regions, fill = NA, color = "black") +
-  ggplot2::theme_minimal()
-```
-
-
-
 ## Bp capture data
 
 A data set of sightings of Fin whales in the Faro area, Algarve, Portugal, during the
 period of 2022 and 2024:
 
-``` r
-data("capture_data_sf")
-
-ggplot2::ggplot() +
-  ggplot2::geom_sf(data = capture_data_sf) +
-  ggplot2::geom_sf(data = exclude_regions, fill = NA, color = "black") +
-  ggplot2::theme_minimal()
-```
-
 ## Effort data
 
 A data set of boat effort from 2022 to 2024 in the Faro area, Algarve, Portugal
-
-``` r
-data("effort_sf")
-
-ggplot2::ggplot() +
-  ggplot2::geom_sf(data = effort_sf) +
-  ggplot2::geom_sf(data = exclude_regions, fill = NA, color = "black") +
-  ggplot2::theme_minimal()
-```
 
 ## Habitat mask
 
 Area that whales can be moving that should represent 4 times model sigma values
 
-``` r
-data("habitat_mask")
-
-ggplot2::ggplot() +
-  ggplot2::geom_point(data = habitat_mask, ggplot2::aes(x = x, y = y), color = "blue", size = 0.5) +
-  ggplot2::geom_sf(data = exclude_regions, fill = NA, color = "black") +
-  ggplot2::theme_minimal()
-```
 
 ## AFWPSE (Algarve Fin Whale Population Size Estimation) 
 
-Area that whales can be moving that should represent 4 times model sigma values
+Model results
 
-``` r
-data("opencr_results_summarised")
-opencr_results_summarised
-```
+## Lighthouse Project 
+
+A dataframe of cetacean sightings in the Algarve region based on the work developed by Forli et al. (2024) 
+Doi: 10.1016/j.ocecoaman.2024.107431
