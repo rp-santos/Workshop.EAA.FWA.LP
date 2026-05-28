@@ -1,5 +1,7 @@
 #This script shows a simplified workflow used to estimate fin whales size population using Jolly-Seber-Schwarz-Arnason capture-recapture model
 
+library(Workshop.EAA.FWA.LP)
+
 #1. === LOAD DATA ===
 
 #1.1. Include only the Algarve region
