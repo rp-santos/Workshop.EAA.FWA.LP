@@ -41,4 +41,4 @@ Model results
 ## Lighthouse Project 
 
 A dataframe of cetacean sightings in the Algarve region based on the work developed by Forli et al. (2024) 
-Doi: 10.1016/j.ocecoaman.2024.107431
+https://doi.org/10.1016/j.ocecoaman.2024.107431
